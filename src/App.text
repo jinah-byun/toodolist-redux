@@ -1,0 +1,52 @@
+삭제하기 버튼 구현 (리덕스로 할 것이다.)
+
+==모듈파일 
+// Action value
+const DELETE_TODO = "DELETE_TODO";
+
+
+// Todo를 지우는 action creator
+export const deleteTodo = (payload) => {
+  return {
+    type: DELETE_TODO,
+    payload,
+  };
+};
+
+// initial state
+const initialState = {
+  todos: [
+    {
+      id: "1",
+      title: "리액트",
+      body: "리액트를 배워봅시다",
+      isDone: false,
+    },
+  ],
+
+
+  const todos = (state = initialState, action) => {
+  switch (action.type) {
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
+      };
+
+
+      export default todos;
+
+
+list 파일
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo } from "../../../redux/modules/todos.js";
+
+const List = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos.todos);
+
+  const onDeleteTodo = (id) => {
+    dispatch(deleteTodo(id));
+  };
+
+
